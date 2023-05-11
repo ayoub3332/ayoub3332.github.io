@@ -175,3 +175,56 @@ h2 {
 .fileopener:hover {
   border-bottom:3px solid var(--color-secondary);
 }
+.animated-button {
+  background-color: transparent; /* fondo transparente */
+  color: #fff; /* color de texto */
+  border: 2px solid #fff; /* borde blanco de 2px */
+  border-radius: 20px; /* esquinas redondeadas */
+  padding: 10px 20px; /* espaciado del contenido */
+  font-size: 18px; /* tamaño del texto */
+  cursor: pointer; /* cursor de puntero */
+  position: relative; /* posición relativa para las animaciones */
+  overflow: hidden; /* oculta el contenido que se salga del botón */
+}
+
+/* Pseudo-elementos */
+.animated-button:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 0.5;
+  transition: all 0.5s ease-in-out;
+}
+
+.animated-button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 0.5;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Animaciones */
+.animated-button:hover:before,
+.animated-button:hover:after {
+  left: 0;
+  right: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+.animated-button:hover:before {
+  transform: skewX(-30deg);
+}
+
+.animated-button:hover:after {
+  transform: skewX(30deg);
+}
+
