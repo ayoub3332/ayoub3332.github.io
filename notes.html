@@ -2,15 +2,15 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Bloc de notas</title>
+    <title>Notes</title>
   </head>
   <body>
-    <h1>Bloc de notas</h1>
-    <p>Escribe aquí:</p>
+    <h1>Notes</h1>
+    <p>Write here:</p>
     <textarea id="texto" rows="10" cols="50"></textarea>
     <br>
-    <button onclick="copiar()">Copiar al portapapeles</button>
-    <button onclick="descargar()">Descargar como TXT</button>
+    <button onclick="copiar()">Copy to clipboard</button>
+    <button onclick="descargar()">Download TXT format</button>
     <script>
       function copiar() {
         var texto = document.getElementById("texto");
