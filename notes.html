@@ -21,7 +21,7 @@
         var texto = document.getElementById("texto").value;
         var enlace = document.createElement("a");
         enlace.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(texto));
-        enlace.setAttribute("download", "bloc-de-notas.txt");
+        enlace.setAttribute("download", "notes.txt");
         enlace.style.display = "none";
         document.body.appendChild(enlace);
         enlace.click();
