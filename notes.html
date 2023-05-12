@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Bloc de notas</title>
+  </head>
+  <body>
+    <h1>Bloc de notas</h1>
+    <p>Escribe aquí:</p>
+    <textarea id="texto" rows="10" cols="50"></textarea>
+    <br>
+    <button onclick="copiar()">Copiar al portapapeles</button>
+    <button onclick="descargar()">Descargar como TXT</button>
+    <script>
+      function copiar() {
+        var texto = document.getElementById("texto");
+        texto.select();
+        document.execCommand("copy");
+      }
+      function descargar() {
+        var texto = document.getElementById("texto").value;
+        var enlace = document.createElement("a");
+        enlace.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(texto));
+        enlace.setAttribute("download", "bloc-de-notas.txt");
+        enlace.style.display = "none";
+        document.body.appendChild(enlace);
+        enlace.click();
+        document.body.removeChild(enlace);
+      }
+    </script>
+  </body>
+</html>
