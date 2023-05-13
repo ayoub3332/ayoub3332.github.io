@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Notes</title>
-    <link rel="icon" href="https://i.ibb.co/pLNgXL8/OIP-removebg-preview-3.png" />
+    <link rel="icon" href="https://cdn.glitch.global/f933b85a-7864-4517-9eb8-4f35f194cd7a/notes.png?v=1683964902801" />
   </head>
   <body>
     <h1>Notes</h1>
@@ -22,7 +22,7 @@
         var texto = document.getElementById("texto").value;
         var enlace = document.createElement("a");
         enlace.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(texto));
-        enlace.setAttribute("download", "notes.txt");
+        enlace.setAttribute("download", "note.txt");
         enlace.style.display = "none";
         document.body.appendChild(enlace);
         enlace.click();
