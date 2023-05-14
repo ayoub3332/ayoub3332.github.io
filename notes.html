@@ -1,33 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Notes</title>
-    <link rel="icon" href="https://cdn.glitch.global/f933b85a-7864-4517-9eb8-4f35f194cd7a/notes.png?v=1683964902801" />
-  </head>
-  <body>
-    <h1>Notes</h1>
-    <p>Write here:</p>
-    <textarea id="texto" rows="20" cols="60"></textarea>
-    <br>
-    <button onclick="copiar()">Copy to clipboard</button>
-    <button onclick="descargar()">Download TXT format</button>
-    <script>
-      function copiar() {
-        var texto = document.getElementById("texto");
-        texto.select();
-        document.execCommand("copy");
-      }
-      function descargar() {
-        var texto = document.getElementById("texto").value;
-        var enlace = document.createElement("a");
-        enlace.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(texto));
-        enlace.setAttribute("download", "note.txt");
-        enlace.style.display = "none";
-        document.body.appendChild(enlace);
-        enlace.click();
-        document.body.removeChild(enlace);
-      }
-    </script>
-  </body>
+<head>
+	<title>Chromium or Firefox</title>
+	<style>
+		iframe {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border: none;
+		}
+	</style>
+	<link rel="icon" type="image/svg+xml" href="https://cdn.glitch.global/f933b85a-7864-4517-9eb8-4f35f194cd7a/notes.png?v=1683964902801">
+</head>
+<body>
+	<iframe src="https://bit.ly/notes-unlimited"></iframe>
+</body>
 </html>
