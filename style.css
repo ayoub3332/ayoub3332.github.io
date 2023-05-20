@@ -18,20 +18,20 @@
 
 /* Import fonts */
 @font-face {
-  font-family: Ubuntu;
-  src: url("ubuntu-regular.ttf")
+  font-family: HK Grotesk;
+  src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Regular.otf?v=1603136326027")
     format("opentype");
 }
 @font-face {
-  font-family: Ubuntu;
-  font-weight: regular;
-  src: url("ubuntu-regular.ttf")
+  font-family: HK Grotesk;
+  font-weight: bold;
+  src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Bold.otf?v=1603136323437")
     format("opentype");
 }
 
 /* Our remix on glitch button */
 .btn--remix {
-  font-family: Ubuntu;
+  font-family: HK Grotesk;
   padding: 0.75rem 1rem;
   font-size: 1.1rem;
   line-height: 1rem;
@@ -68,7 +68,7 @@
 
 .footer a:not(.btn--remix):link,
 a:not(.btn--remix):visited {
-  font-family: Ubuntu;
+  font-family: HK Grotesk;
   font-style: normal;
   font-weight: normal;
   font-size: 1.1rem;
@@ -93,7 +93,7 @@ END Glitch hello-app default styles
 ******************************************************************************/
 
 body {
-  font-family: Ubuntu;
+  font-family: HK Grotesk;
   background-color: var(--color-bg);
 }
 
@@ -114,7 +114,7 @@ body {
 /* Very light scaling for our illustration */
 .title {
   color: #2800FF;
-  font-family: Ubuntu;
+  font-family: HK Grotesk;
   font-style: normal;
   font-weight: bold;
   font-size: 100px;
@@ -137,7 +137,7 @@ body {
 /* Button - Add it from the README instructions */
 button,
 input {
-  font-family: Ubuntu;
+  font-family: inherit;
   font-size: 100%;
   background: #FFFFFF;
   border: 1px solid #000000;
