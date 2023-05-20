@@ -66,11 +66,16 @@ a:not(.btn--remix):visited {
   border-style: none;
 }
 
-/* ... Resto del código ... */
-
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
   font-family: "Ubuntu", sans-serif;
   background-color: var(--color-bg);
 }
 
-/* ... Resto del código ... */
+.wrapper {
+  text-align: center;
+}
