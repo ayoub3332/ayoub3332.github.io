@@ -5,8 +5,8 @@
   --wrapper-height: 87vh;
   --image-max-width: 300px;
   --image-margin: 3rem;
-  --font-family: "HK Grotesk";
-  --font-family-header: "HK Grotesk";
+  --font-family: "Ubuntu";
+  --font-family-header: "Ubuntu";
 }
 
 * {
@@ -18,20 +18,15 @@
 
 /* Import fonts */
 @font-face {
-  font-family: HK Grotesk;
-  src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Regular.otf?v=1603136326027")
-    format("opentype");
-}
-@font-face {
-  font-family: HK Grotesk;
-  font-weight: bold;
-  src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Bold.otf?v=1603136323437")
-    format("opentype");
+  font-family: "Ubuntu";
+  src: url("ubuntu-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* Our remix on glitch button */
 .btn--remix {
-  font-family: HK Grotesk;
+  font-family: "Ubuntu", sans-serif;
   padding: 0.75rem 1rem;
   font-size: 1.1rem;
   line-height: 1rem;
@@ -68,7 +63,7 @@
 
 .footer a:not(.btn--remix):link,
 a:not(.btn--remix):visited {
-  font-family: HK Grotesk;
+  font-family: "Ubuntu", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 1.1rem;
@@ -93,7 +88,7 @@ END Glitch hello-app default styles
 ******************************************************************************/
 
 body {
-  font-family: HK Grotesk;
+  font-family: "Ubuntu", sans-serif;
   background-color: var(--color-bg);
 }
 
@@ -114,7 +109,7 @@ body {
 /* Very light scaling for our illustration */
 .title {
   color: #2800FF;
-  font-family: HK Grotesk;
+  font-family: "Ubuntu", sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 100px;
