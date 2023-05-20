@@ -170,9 +170,3 @@ h2 {
 .fileopener:hover {
   border-bottom:3px solid var(--color-secondary);
 }
-
-/* Ajustar el tamaño del ícono */
-.link-icon {
-  width: 755px;
-  height: 755px;
-}
