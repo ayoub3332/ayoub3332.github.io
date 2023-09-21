@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Battery Level</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="icon"
+      href="https://cdn.glitch.global/27fd8cb7-6e3e-4fb8-a963-8ab5a4f702b8/batery.png?v=1685477583439"
+    />
+    <style>
+      body {
+        background: linear-gradient(50deg, #20c20e, #000000);
+        background-size: 400% 400%;
+        animation: gradientAnimation 10s ease infinite;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        color: #fff;
+      }
+
+      @keyframes gradientAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* Rest of the CSS code */
+
+      h1 {
+        margin-top: 40px;
+        font-size: 32px;
+        color: #ffffff;
+      }
+
+      #battery-level {
+        font-size: 24px;
+        margin-top: 20px;
+        color: #ffffff;
+      }
+
+      #battery-charging {
+        margin-top: 10px;
+        color: #ffffff;
+      }
+
+      #battery-not-supported {
+        margin-top: 20px;
+        color: #ffffff;
+      }
+
+      .battery-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column; /* Añadido para alinear verticalmente */
+        margin-top: 40px;
+      }
+
+      .battery-bar {
+        width: 200px;
+        height: 100px;
+        background-color: #eee;
+        border: 2px solid #555;
+        position: relative;
+      }
+
+      .battery-level {
+        width: calc(var(--level) * 100%);
+        height: 100%;
+        background-color: var(--color);
+        transition: width 0.3s ease-in-out;
+        position: relative;
+      }
+
+      .battery-percentage {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 18px;
+        color: #333;
+      }
+
+      .battery-info {
+        margin-top: 5px; /* Ajuste de margen */
+        font-size: 14px;
+        color: #ffffff;
+      }
+
+      .battery-icon {
+        position: absolute;
+        bottom: 5px; /* Ajuste de posición */
+        left: 50%;
+        transform: translateX(-50%); /* Ajuste de posición */
+        color: #ffffff;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      .charging .battery-icon {
+        opacity: 1;
+      }
+    </style>
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        if ("getBattery" in navigator) {
+          navigator.getBattery().then(function (battery) {
+            function updateBatteryStatus() {
+              var level = battery.level;
+              var charging = battery.charging;
+              var timeToCharge = battery.chargingTime;
+              var timeToDischarge = battery.dischargingTime;
+
+              document.getElementById("battery-level").textContent =
+                "Battery Level: " + (level * 100).toFixed(2) + "%";
+              document.getElementById("battery-charging").textContent =
+                "Charging Status: " + (charging ? "Charging" : "Not charging");
+
+              var batteryBar = document.getElementById("battery-bar");
+              batteryBar.style.setProperty("--level", level);
+
+              if (level <= 0.15 && level >= 0.05) {
+                batteryBar.style.setProperty("--color", "#FFC107");
+              } else if (level < 0.05) {
+                batteryBar.style.setProperty("--color", "#FF0000");
+              } else {
+                batteryBar.style.setProperty("--color", "#4CAF50");
+              }
+
+              var batteryPercentage =
+                document.getElementById("battery-percentage");
+              batteryPercentage.textContent = (level * 100).toFixed(0) + "%";
+
+              var batteryIcon = document.getElementById("battery-icon");
+              batteryIcon.style.display = charging ? "inline-block" : "none";
+
+              var batteryInfo = document.getElementById("battery-info");
+              batteryInfo.innerHTML = charging
+                ? "Estimated Time to Charge: " + formatTime(timeToCharge)
+                : "Estimated Time to Discharge: " + formatTime(timeToDischarge);
+            }
+
+            function formatTime(timeInSeconds) {
+              if (timeInSeconds === Infinity) {
+                return "Calculating...";
+              }
+
+              var hours = Math.floor(timeInSeconds / 3600);
+              var minutes = Math.floor((timeInSeconds % 3600) / 60);
+
+              return (
+                hours.toString().padStart(2, "0") +
+                ":" +
+                minutes.toString().padStart(2, "0")
+              );
+            }
+
+            battery.addEventListener("levelchange", updateBatteryStatus);
+            battery.addEventListener("chargingchange", updateBatteryStatus);
+            battery.addEventListener("chargingtimechange", updateBatteryStatus);
+            battery.addEventListener(
+              "dischargingtimechange",
+              updateBatteryStatus
+            );
+
+            updateBatteryStatus();
+          });
+        } else {
+          document.getElementById("battery-not-supported").textContent =
+            "Battery Status API is not supported in this browser.";
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Battery Information</h1>
+
+    <div id="battery-level"></div>
+    <div id="battery-charging"></div>
+    <div id="battery-not-supported"></div>
+
+    <div class="battery-container">
+      <div id="battery-bar" class="battery-bar">
+        <div class="battery-level"></div>
+        <div class="battery-percentage">
+          <span id="battery-percentage"></span>
+          <i id="battery-icon" class="fas fa-bolt"></i>
+        </div>
+      </div>
+      <div id="battery-info" class="battery-info"></div>
+    </div>
+  </body>
+</html>
