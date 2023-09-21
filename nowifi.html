@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Network Status Checker</title>
+</head>
+<body>
+    <div id="disconnected-message" style="display: none;">
+        <h1>You are not connected to the internet.</h1>
+        <p>Please check your network connection and try again.</p>
+    </div>
+
+    <script>
+        // Function to check network status
+        function checkNetworkStatus() {
+            const disconnectedMessage = document.getElementById("disconnected-message");
+
+            if (!navigator.onLine) {
+                disconnectedMessage.style.display = "block";
+            } else {
+                disconnectedMessage.style.display = "none";
+            }
+        }
+
+        // Check network status on page load
+        window.addEventListener("load", checkNetworkStatus);
+
+        // Check network status on window focus
+        window.addEventListener("focus", checkNetworkStatus);
+
+        // Check network status periodically (you can adjust the interval as needed)
+        setInterval(checkNetworkStatus, 5000); // Check every 5 seconds
+    </script>
+</body>
+</html>
