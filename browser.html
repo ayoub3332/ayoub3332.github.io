@@ -1,20 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Chromium or Firefox</title>
-	<style>
-		iframe {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			border: none;
-		}
-	</style>
-	<link rel="icon" type="image/svg+xml" href="https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2Fillustration.svg?v=1618177344016">
+    <title>Chromium or Firefox</title>
+    <link rel="icon" type="image/svg+xml" href="https://cdn.glitch.global/a9975ea6-8949-4bab-addb-8a95021dc2da/illustration.svg?v=1618177344016">
+    <style>
+        /* Add your styles for the modal here */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-	<iframe src="https://replit.com/@4evergames3596/Browser-Emulator?v=1&outputonly=1&lite=true"></iframe>
+    <iframe src="https://replit.com/@4evergames3596/Browser-Emulator?v=1&outputonly=1&lite=true"></iframe>
+
+    <div id="disconnected-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h1>You are not connected to the internet.</h1>
+            <p>Please check your network connection and try again.</p>
+        </div>
+    </div>
+
+    <script>
+        // Function to display the modal
+        function openModal() {
+            const modal = document.getElementById("disconnected-modal");
+            modal.style.display = "block";
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            const modal = document.getElementById("disconnected-modal");
+            modal.style.display = "none";
+        }
+
+        // Function to check network status
+        function checkNetworkStatus() {
+            if (!navigator.onLine) {
+                openModal();
+            } else {
+                closeModal();
+            }
+        }
+
+        // Check network status on page load
+        window.addEventListener("load", checkNetworkStatus);
+
+        // Check network status on window focus
+        window.addEventListener("focus", checkNetworkStatus);
+
+        // Check network status periodically (you can adjust the interval as needed)
+        setInterval(checkNetworkStatus, 5000); // Check every 5 seconds
+    </script>
 </body>
 </html>
