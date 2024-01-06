@@ -1,0 +1,15 @@
+{
+  "name": "Eaglercraft",
+  "short_name": "Eaglercraft",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "Eaglercraft, the Minecraft for Chromebooks",
+  "icons": [
+    {
+      "src": "https://cdn.glitch.global/716265ac-0868-498c-9318-4609cfe6d085/minecraft.png?v=1683578677560",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
